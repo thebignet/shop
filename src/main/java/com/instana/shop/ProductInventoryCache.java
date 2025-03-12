@@ -21,11 +21,20 @@ public class ProductInventoryCache {
     }
 
     public void removeFromCart(Product productId) {
+        addToInventory(productId);
+    }
+
+    public void addToInventory(Product productId) {
         int v = cache.get(productId);
         cache.put(productId, ++v);
     }
 
-    public void addToCart(Product productId) {
+    public void addToCart(Product productId){
+        removeFromInventory(productId);
+    }
+
+    private void removeFromInventory(Product productId) {
+        // documentation on compute : https://www.w3schools.com/java/ref_hashmap_compute.asp
         cache.compute(productId, (k,v) -> {
             if (v >= 1) {
                 return v--;
