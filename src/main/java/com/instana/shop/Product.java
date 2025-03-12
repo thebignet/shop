@@ -1,4 +1,17 @@
 package com.instana.shop;
 
-public record Product(String id) {
+public class Product {
+
+    private String id;
+
+    public Product(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id='" + id + '\'' +
+                '}';
+    }
 }
